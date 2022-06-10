@@ -1,0 +1,9 @@
+<h1>Lista de clientes</h1>
+
+<div class="boton">
+  <button (click)="createClient()">Crear cliente</button>
+</div>
+<app-tabla
+  [clientes]="clientes"
+  (accionTabla)="accionTabla($event)"
+></app-tabla>

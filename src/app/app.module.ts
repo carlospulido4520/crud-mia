@@ -11,6 +11,7 @@ import { MiaCoreModule, MIA_GOOGLE_STORAGE_PROVIDER } from '@agencycoda/mia-core
 import { MiaTableModule } from '@agencycoda/mia-table';
 import { MiaFormModule } from '@agencycoda/mia-form';
 import { MiaLoadingModule } from '@agencycoda/mia-loading';
+import { ClienteModule } from './modules/cliente/cliente.module';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { MiaLoadingModule } from '@agencycoda/mia-loading';
     MiaTableModule,
     MiaLoadingModule,
     MiaFormModule,
+    ClienteModule,
   ],
   providers: [
     { 

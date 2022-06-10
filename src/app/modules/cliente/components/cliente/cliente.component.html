@@ -1,0 +1,17 @@
+<h5 mat-dialog-title class="mat-dialog-title">
+  {{ data.item ? "Editar cliente" : "Crear cliente" }}
+</h5>
+
+<mat-dialog-content class="form-modal">
+  <div class="content">
+    <mia-form #miaForm [config]="data.config" [item]="data.item"></mia-form>
+
+    <div *ngIf="errorMessage != ''">{{ errorMessage }}</div>
+  </div>
+</mat-dialog-content>
+
+<div class="mat-dialog-actions" mat-dialog-actions>
+  <button mat-raised-button color="primary" (click)="onClickSave()">
+    {{ data.item ? "Editar" : "Crear" }}
+  </button>
+</div>
