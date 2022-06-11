@@ -1,5 +1,5 @@
 <h5 mat-dialog-title class="mat-dialog-title">
-  {{ data.item ? "Editar cliente" : "Crear cliente" }}
+  {{ data.item.firstname ? "Editar cliente" : "Crear cliente" }}
 </h5>
 
 <mat-dialog-content class="form-modal">
@@ -12,6 +12,6 @@
 
 <div class="mat-dialog-actions" mat-dialog-actions>
   <button mat-raised-button color="primary" (click)="onClickSave()">
-    {{ data.item ? "Editar" : "Crear" }}
+    {{ data.item.firstname ? "Editar" : "Crear" }}
   </button>
 </div>

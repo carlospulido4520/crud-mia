@@ -15,6 +15,7 @@ export class TablaComponent implements OnChanges {
   @Output() accionTabla: EventEmitter<any> = new EventEmitter();
 
   mostrarTabla = false;
+  cargando = false;
   tableConfig: MiaTableConfig = new MiaTableConfig();
   mockData?: MiaPagination<Client>;
 
@@ -22,8 +23,11 @@ export class TablaComponent implements OnChanges {
 
 
   ngOnChanges(): void {
-    this.mostrarTabla = false;
+    this.cargando = true;
     if (this.clientes) {
+      setTimeout(() => {
+        this.cargando = false;
+      }, 500);
       this.mostrarTabla = true;
       this.loadConfig();
     }

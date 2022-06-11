@@ -1,4 +1,4 @@
-import { MiaFormConfig, MiaFormModalConfig } from '@agencycoda/mia-form';
+import { MiaField, MiaFormConfig, MiaFormModalConfig } from '@agencycoda/mia-form';
 import { MiaTableConfig } from '@agencycoda/mia-table';
 import { Component, OnInit } from '@angular/core';
 import { Validators } from '@angular/forms';
@@ -57,9 +57,9 @@ export class ListaClientesComponent implements OnInit {
     let config = new MiaFormConfig();
     config.hasSubmit = false;
     config.fields = [
-      { key: 'firstname', type: 'string', label: 'Nombre', validators: [Validators.required] },
-      { key: 'lastname', type: 'string', label: 'Apellido', validators: [Validators.required] },
-      { key: 'email', type: 'email', label: 'Email', validators: [Validators.required] },
+      { key: 'firstname', type: MiaField.TYPE_STRING, label: 'Nombre', validators: [Validators.required] },
+      { key: 'lastname', type: MiaField.TYPE_STRING, label: 'Apellido', validators: [Validators.required] },
+      { key: 'email', type: MiaField.TYPE_EMAIL, label: 'Email', validators: [Validators.required] },
     ];
     config.errorMessages = [
       { key: 'required', message: 'The "%label%" is required.' }
@@ -71,7 +71,11 @@ export class ListaClientesComponent implements OnInit {
       width: '500px',
       panelClass: 'modal-full-width-mobile',
       data: data
-    }).afterClosed();
+    }).afterClosed().subscribe(
+      () => {
+        this.getClients();
+      }
+    );
   }
 
   showAlertError(id: number) {
@@ -86,6 +90,5 @@ export class ListaClientesComponent implements OnInit {
       }
     );
   }
-
-
+  
 }

@@ -1,5 +1,5 @@
 import { MiaFormComponent, MiaFormModalComponent, MiaFormModalConfig } from '@agencycoda/mia-form';
-import { Component, Inject, OnInit, ViewChild } from '@angular/core';
+import { Component, Inject, ViewChild } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
@@ -7,7 +7,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
   templateUrl: './cliente.component.html',
   styleUrls: ['./cliente.component.scss']
 })
-export class ClienteComponent implements OnInit {
+export class ClienteComponent {
 
   @ViewChild('miaForm') miaForm!: MiaFormComponent;
 
@@ -18,11 +18,6 @@ export class ClienteComponent implements OnInit {
     protected dialogRef: MatDialogRef<MiaFormModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: MiaFormModalConfig
   ) { }
-
-  ngOnInit(): void {
-    console.log(this.data)
-  }
-
 
   save(item: any) {
     if (this.isSending) {
@@ -49,7 +44,6 @@ export class ClienteComponent implements OnInit {
 
   onClickSave() {
     this.miaForm.submit().subscribe(result => {
-      console.log(result)
       this.save(result);
     });
   }
